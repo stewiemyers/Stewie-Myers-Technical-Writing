@@ -1,0 +1,272 @@
+# TaskFlow API Documentation
+
+## Overview
+The TaskFlow API allows developers to integrate task management features into their applications. It provides endpoints for creating, retrieving, updating, and deleting tasks, as well as managing categories and reminders.
+
+---
+
+## Base URL
+```
+https://api.taskflow.com/v1
+```
+
+---
+
+## Authentication
+All endpoints require an API key for authentication. Include the API key in the request header:
+
+```
+Authorization: Bearer <your_api_key>
+```
+
+---
+
+## Endpoints
+
+### 1. **Get All Tasks**
+Retrieve a list of all tasks.
+
+**Endpoint:**
+```
+GET /tasks
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+```
+
+**Response Example:**
+```json
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Complete API documentation",
+      "due_date": "2025-01-10",
+      "status": "pending"
+    },
+    {
+      "id": "2",
+      "title": "Review pull requests",
+      "due_date": "2025-01-12",
+      "status": "completed"
+    }
+  ]
+}
+```
+
+---
+
+### 2. **Create a New Task**
+Add a new task to the system.
+
+**Endpoint:**
+```
+POST /tasks
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+Content-Type: application/json
+```
+
+**Request Body Example:**
+```json
+{
+  "title": "Write blog post",
+  "due_date": "2025-01-15",
+  "status": "pending"
+}
+```
+
+**Response Example:**
+```json
+{
+  "id": "3",
+  "title": "Write blog post",
+  "due_date": "2025-01-15",
+  "status": "pending"
+}
+```
+
+---
+
+### 3. **Update a Task**
+Update the details of an existing task.
+
+**Endpoint:**
+```
+PUT /tasks/{task_id}
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+Content-Type: application/json
+```
+
+**Request Body Example:**
+```json
+{
+  "title": "Write API blog post",
+  "status": "completed"
+}
+```
+
+**Response Example:**
+```json
+{
+  "id": "3",
+  "title": "Write API blog post",
+  "due_date": "2025-01-15",
+  "status": "completed"
+}
+```
+
+---
+
+### 4. **Comment on Task Status**
+Add a comment to a task's status.
+
+**Endpoint:**
+```
+POST /tasks/{task_id}/comments
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+Content-Type: application/json
+```
+
+**Request Body Example:**
+```json
+{
+  "comment": "This task needs to be prioritized."
+}
+```
+
+**Response Example:**
+```json
+{
+  "message": "Comment added successfully.",
+  "comment_id": "456"
+}
+```
+
+---
+
+### 5. **Share Task with Others**
+Share a task with another user.
+
+**Endpoint:**
+```
+POST /tasks/{task_id}/share
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+Content-Type: application/json
+```
+
+**Request Body Example:**
+```json
+{
+  "user_email": "collaborator@example.com"
+}
+```
+
+**Response Example:**
+```json
+{
+  "message": "Task shared successfully."
+}
+```
+
+---
+
+### 6. **Delete or Archive a Task**
+Mark a task as archived instead of deleting it permanently.
+
+**Endpoint:**
+```
+PATCH /tasks/{task_id}/archive
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+Content-Type: application/json
+```
+
+**Request Body Example:**
+```json
+{
+  "archive": true
+}
+```
+
+**Response Example:**
+```json
+{
+  "message": "Task archived successfully."
+}
+```
+
+---
+
+### 7. **Add or Update Due Dates**
+Assign or modify a due date for a task.
+
+**Endpoint:**
+```
+PATCH /tasks/{task_id}/due_date
+```
+
+**Request Headers:**
+```
+Authorization: Bearer <your_api_key>
+Content-Type: application/json
+```
+
+**Request Body Example:**
+```json
+{
+  "due_date": "2025-02-01"
+}
+```
+
+**Response Example:**
+```json
+{
+  "id": "3",
+  "due_date": "2025-02-01",
+  "message": "Due date updated successfully."
+}
+```
+
+---
+
+## Error Codes
+
+| Status Code | Description              |
+|-------------|--------------------------|
+| 400         | Bad Request              |
+| 401         | Unauthorized             |
+| 404         | Resource Not Found       |
+| 500         | Internal Server Error    |
+
+---
+
+## Rate Limits
+- **Requests per Minute:** 60
+- **Requests per Day:** 10,000
+
+Exceeding these limits will result in a 429 (Too Many Requests) response.
+
+---
+
+For more details, contact our support team at [support@taskflow.com](mailto:support@taskflow.com).
