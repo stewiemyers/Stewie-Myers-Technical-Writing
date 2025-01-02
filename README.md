@@ -17,7 +17,7 @@ I am a seasoned technical writer with experience in:
 ## **Portfolio Highlights**
 
 ### 1. [Vendor Survey Procedures](https://github.com/stewiemyers/Stewie-Myers-Technical-Writing/blob/850be5b2de1fadfcbb3dacdedac91c2147285cdd/Procedures%20for%20Anonymous%20Collection%20of%20Vendor%20Survey.pdf)
-- A comprehensive guide for collecting and analyzing anonymous vendor surveys.
+- A comprehensive guide for collecting and analyzing anonymous vendor surveys for local Farmer's Market .
 - Focuses on confidentiality, systematic tracking, and actionable insights.
 
 ### 2. [API Documentation Sample](https://github.com/stewiemyers/Stewie-Myers-Technical-Writing/blob/f0f0882d8c22626aa24c354d1375bad289e5f5d9/%22Taskflow%22%20API%20Documentation%20Sample)
